@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{15B5BB4D-098A-402B-8F97-B456118CDD6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{723A63F0-3A62-4A33-81DC-498C729892CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{23D7E3F5-6F88-4EA2-B2CE-EB537644B9FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D4225591-17D9-4A4D-A3F1-69118D93FF13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{14C001E0-AACE-4329-9AC1-8DF1270CC8A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A_Vick.Telegram.FunctionApp", "A_Vick.Telegram.FunctionApp\A_Vick.Telegram.FunctionApp.csproj", "{108F8A56-498E-4DAA-AFAE-BE3C9ED024AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A_Vick.Telegram.BL", "A_Vick.Telegram.BL\A_Vick.Telegram.BL.csproj", "{1CCF4E61-0CEE-428F-AC1B-5BF4747C82B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A_Vick.Telegram.DataAccess", "A_Vick.Telegram.DataAccess\A_Vick.Telegram.DataAccess.csproj", "{1C0B0094-2792-4DF3-864B-4EB325405010}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A_Vick.Telegram.Shared", "A_Vick.Telegram.Shared\A_Vick.Telegram.Shared.csproj", "{16EBDD9E-45D5-4A14-84DE-26FD99137100}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A_Vick.Telegram.Entities", "A_Vick.Telegram.Entities\A_Vick.Telegram.Entities.csproj", "{3B78F000-EA02-48C7-8567-9993998BD659}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_Vick.Telegram.Service", "A_Vick.Telegram.Service\A_Vick.Telegram.Service.csproj", "{28F416E5-8EFB-4306-AD44-87F78E1CC9B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_Vick.Telegram.Models", "A_Vick.Telegram.Models\A_Vick.Telegram.Models.csproj", "{EA241DA9-980A-451C-8184-A3814542F724}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{108F8A56-498E-4DAA-AFAE-BE3C9ED024AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108F8A56-498E-4DAA-AFAE-BE3C9ED024AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108F8A56-498E-4DAA-AFAE-BE3C9ED024AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108F8A56-498E-4DAA-AFAE-BE3C9ED024AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCF4E61-0CEE-428F-AC1B-5BF4747C82B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCF4E61-0CEE-428F-AC1B-5BF4747C82B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCF4E61-0CEE-428F-AC1B-5BF4747C82B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCF4E61-0CEE-428F-AC1B-5BF4747C82B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0B0094-2792-4DF3-864B-4EB325405010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0B0094-2792-4DF3-864B-4EB325405010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0B0094-2792-4DF3-864B-4EB325405010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0B0094-2792-4DF3-864B-4EB325405010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16EBDD9E-45D5-4A14-84DE-26FD99137100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16EBDD9E-45D5-4A14-84DE-26FD99137100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16EBDD9E-45D5-4A14-84DE-26FD99137100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16EBDD9E-45D5-4A14-84DE-26FD99137100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B78F000-EA02-48C7-8567-9993998BD659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B78F000-EA02-48C7-8567-9993998BD659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B78F000-EA02-48C7-8567-9993998BD659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B78F000-EA02-48C7-8567-9993998BD659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F416E5-8EFB-4306-AD44-87F78E1CC9B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F416E5-8EFB-4306-AD44-87F78E1CC9B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F416E5-8EFB-4306-AD44-87F78E1CC9B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F416E5-8EFB-4306-AD44-87F78E1CC9B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA241DA9-980A-451C-8184-A3814542F724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA241DA9-980A-451C-8184-A3814542F724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA241DA9-980A-451C-8184-A3814542F724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA241DA9-980A-451C-8184-A3814542F724}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{108F8A56-498E-4DAA-AFAE-BE3C9ED024AB} = {723A63F0-3A62-4A33-81DC-498C729892CF}
+		{1CCF4E61-0CEE-428F-AC1B-5BF4747C82B9} = {15B5BB4D-098A-402B-8F97-B456118CDD6C}
+		{1C0B0094-2792-4DF3-864B-4EB325405010} = {23D7E3F5-6F88-4EA2-B2CE-EB537644B9FC}
+		{16EBDD9E-45D5-4A14-84DE-26FD99137100} = {D4225591-17D9-4A4D-A3F1-69118D93FF13}
+		{3B78F000-EA02-48C7-8567-9993998BD659} = {23D7E3F5-6F88-4EA2-B2CE-EB537644B9FC}
+		{28F416E5-8EFB-4306-AD44-87F78E1CC9B0} = {723A63F0-3A62-4A33-81DC-498C729892CF}
+		{EA241DA9-980A-451C-8184-A3814542F724} = {D4225591-17D9-4A4D-A3F1-69118D93FF13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BB5FD13-EC94-49DC-9EE1-B9CD8811BAC9}
+	EndGlobalSection
+EndGlobal
