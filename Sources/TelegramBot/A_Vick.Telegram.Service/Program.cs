@@ -33,6 +33,10 @@ namespace A_Vick.Telegram.Service
                     services.AddHostedServices();
                     services.AddOption<TelegramBotOptions>(hostContext.Configuration);
                 })
+                .UseDefaultServiceProvider((context, options) =>
+                {
+                    options.ValidateOnBuild = true;
+                })
                 .UseContentRoot(pathToContentRoot);
 
             if (isService)

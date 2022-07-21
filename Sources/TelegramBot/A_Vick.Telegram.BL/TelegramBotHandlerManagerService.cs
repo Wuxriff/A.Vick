@@ -16,12 +16,12 @@ namespace A_Vick.Telegram.BL
             _memoryCacheManager = memoryCacheManager;
         }
 
-        public void AddOrUpdateHandler(long userId, BaseStateHanlder hanlder)
+        public void AddOrUpdateHandler(long userId, BaseStateHandler hanlder)
         {
             _memoryCacheManager.AddOrReplace(GetCacheKey(userId), hanlder, _lifeTime);
         }
 
-        public bool TryGetHandler(long userId, out BaseStateHanlder? handler)
+        public bool TryGetHandler(long userId, out BaseStateHandler? handler)
         {
             return _memoryCacheManager.TryGet(GetCacheKey(userId), out handler);
         }

@@ -18,7 +18,7 @@ namespace A_Vick.Telegram.BL
         private readonly ITelegramBotContext _botContext;
         private readonly ITelegramBotMessageHandlerService _handlerService;
 
-        private static TelegramBotClient? Bot;
+        private bool _isInitialized;
 
         public TelegramBotService(ITelegramBotConfigurationService configurationService, ITelegramBotContext botContext, ITelegramBotMessageHandlerService handlerService)
         {
@@ -31,12 +31,13 @@ namespace A_Vick.Telegram.BL
         {
             var apiToken = _configurationService.GetApiToken();
 
-            _botContext.BotClient = Bot = new TelegramBotClient(apiToken);
+            _botContext.BotClient = new TelegramBotClient(apiToken);
+            _isInitialized = true;
         }
 
         public async ValueTask StartAsync(CancellationToken cancellationToken)
         {
-            if (Bot == null)
+            if (!_isInitialized)
                 throw new InvalidOperationException("Telegram bot in not initialized. Call Init() method first!");
 
             var receiverOptions = new ReceiverOptions
@@ -44,7 +45,7 @@ namespace A_Vick.Telegram.BL
                 AllowedUpdates = new[] { UpdateType.Message, UpdateType.CallbackQuery }
             };
 
-            Bot.StartReceiving(HandleUpdateAsync, HandleErrorAsync, receiverOptions, cancellationToken);
+            _botContext.BotClient.StartReceiving(HandleUpdateAsync, HandleErrorAsync, receiverOptions, cancellationToken);
 
             var commands = new List<BotCommand>
             {
@@ -55,7 +56,7 @@ namespace A_Vick.Telegram.BL
                 new BotCommand { Command = Constants.TelegramBotCommandDeleteStickerFromSet, Description = "Removes sticker from a set" },
             };
 
-            await Bot.SetMyCommandsAsync(commands, cancellationToken: cancellationToken);
+            await _botContext.BotClient.SetMyCommandsAsync(commands, cancellationToken: cancellationToken);
         }
 
         private async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -92,13 +93,13 @@ namespace A_Vick.Telegram.BL
             await WriteChatMessage(message.Chat.Id, resultMessage, cancellationToken);
         }
 
-        private static Task UnknownUpdateHandlerAsync(ITelegramBotClient botClient, Update update)
+        private Task UnknownUpdateHandlerAsync(ITelegramBotClient botClient, Update update)
         {
             Console.WriteLine($"Unknown update type: {update.Type}");
             return Task.CompletedTask;
         }
 
-        private static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
+        private Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             var ErrorMessage = exception switch
             {
@@ -110,12 +111,12 @@ namespace A_Vick.Telegram.BL
             return Task.CompletedTask;
         }
 
-        private static Task WriteChatMessage(long chatId, string text, CancellationToken cancellationToken)
+        private Task WriteChatMessage(long chatId, string text, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(text))
                 return Task.CompletedTask;
 
-            return Bot!.SendTextMessageAsync(chatId, text, cancellationToken: cancellationToken);
+            return _botContext.BotClient.SendTextMessageAsync(chatId, text, cancellationToken: cancellationToken);
         }
     }
 }

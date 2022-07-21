@@ -7,7 +7,7 @@ using Telegram.Bot.Types;
 
 namespace A_Vick.Telegram.BL.StateHandlers
 {
-    public class CommandImportSetHandler : BaseStateHanlder
+    public class CommandImportSetHandler : BaseStateHandler
     {
         public CommandImportSetHandler()
         {
@@ -20,16 +20,13 @@ namespace A_Vick.Telegram.BL.StateHandlers
 
         private const string ErrorStickerMessage = "Not a sticker, sorry. Please, send us a sticker!";
 
-        private long _userId;
         private string? _sourceSetName;
         private string? _importTosetName;
 
-        public override async ValueTask<(string Message, BaseStateHanlder Handler)> ProcessAsync(IServiceProvider services, Message message)
+        public override async ValueTask<(string Message, BaseStateHandler Handler)> ProcessAsync(IServiceProvider services, Message message)
         {
             if (CurrentState == TelegramBotHandlerStates.CommandImportSet_Start)
             {
-                _userId = message.From!.Id;
-
                 CurrentState = TelegramBotHandlerStates.CommandImportSet_WaitingSticker;
                 return (WelcomeMessage, this);
             }
@@ -63,7 +60,7 @@ namespace A_Vick.Telegram.BL.StateHandlers
                 _importTosetName = sticker.SetName;
 
                 var service = services.GetRequiredService<ITelegramBotStickerService>();
-                await service.ImportStickerSetAsync(_userId, _sourceSetName!, _importTosetName!);
+                await service.ImportStickerSetAsync(message.From!.Id, _sourceSetName!, _importTosetName!);
 
                 CurrentState = TelegramBotHandlerStates.None;
                 return (ImportStickerSetToSet, new IdleHandler());
