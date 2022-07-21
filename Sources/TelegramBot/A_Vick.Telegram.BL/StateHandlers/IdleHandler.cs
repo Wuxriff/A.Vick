@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace A_Vick.Telegram.BL.StateHandlers
 {
-    public class IdleHandler : BaseStateHanlder
+    public class IdleHandler : BaseStateHandler
     {
         private const string WelcomeMessage = "Please, use commands menu to perform actions";
         public IdleHandler()
@@ -13,9 +13,9 @@ namespace A_Vick.Telegram.BL.StateHandlers
             CurrentState = TelegramBotHandlerStates.Idle;
         }
 
-        public override ValueTask<(string, BaseStateHanlder)> ProcessAsync(IServiceProvider services, Message message)
+        public override ValueTask<(string, BaseStateHandler)> ProcessAsync(IServiceProvider services, Message message)
         {
-            return new ValueTask<(string, BaseStateHanlder)>((WelcomeMessage, this));
+            return new ValueTask<(string, BaseStateHandler)>((WelcomeMessage, this));
         }
     }
 }

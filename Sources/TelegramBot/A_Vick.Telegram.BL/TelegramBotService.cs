@@ -18,7 +18,7 @@ namespace A_Vick.Telegram.BL
         private readonly ITelegramBotContext _botContext;
         private readonly ITelegramBotMessageHandlerService _handlerService;
 
-        private static TelegramBotClient? Bot;
+        private TelegramBotClient? Bot;
 
         public TelegramBotService(ITelegramBotConfigurationService configurationService, ITelegramBotContext botContext, ITelegramBotMessageHandlerService handlerService)
         {
@@ -92,13 +92,13 @@ namespace A_Vick.Telegram.BL
             await WriteChatMessage(message.Chat.Id, resultMessage, cancellationToken);
         }
 
-        private static Task UnknownUpdateHandlerAsync(ITelegramBotClient botClient, Update update)
+        private Task UnknownUpdateHandlerAsync(ITelegramBotClient botClient, Update update)
         {
             Console.WriteLine($"Unknown update type: {update.Type}");
             return Task.CompletedTask;
         }
 
-        private static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
+        private Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             var ErrorMessage = exception switch
             {
@@ -110,7 +110,7 @@ namespace A_Vick.Telegram.BL
             return Task.CompletedTask;
         }
 
-        private static Task WriteChatMessage(long chatId, string text, CancellationToken cancellationToken)
+        private Task WriteChatMessage(long chatId, string text, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(text))
                 return Task.CompletedTask;

@@ -38,7 +38,7 @@ namespace A_Vick.Telegram.BL
             return result.Message;
         }
 
-        private static bool TryGetCommandHandler(string? command, out BaseStateHanlder? handler)
+        private static bool TryGetCommandHandler(string? command, out BaseStateHandler? handler)
         {
             if (command == Constants.TelegramBotCommandCloneSet)
             {

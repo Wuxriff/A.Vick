@@ -7,7 +7,7 @@ using Telegram.Bot.Types;
 
 namespace A_Vick.Telegram.BL.StateHandlers
 {
-    public class CommandImportSetHandler : BaseStateHanlder
+    public class CommandImportSetHandler : BaseStateHandler
     {
         public CommandImportSetHandler()
         {
@@ -24,7 +24,7 @@ namespace A_Vick.Telegram.BL.StateHandlers
         private string? _sourceSetName;
         private string? _importTosetName;
 
-        public override async ValueTask<(string Message, BaseStateHanlder Handler)> ProcessAsync(IServiceProvider services, Message message)
+        public override async ValueTask<(string Message, BaseStateHandler Handler)> ProcessAsync(IServiceProvider services, Message message)
         {
             if (CurrentState == TelegramBotHandlerStates.CommandImportSet_Start)
             {
