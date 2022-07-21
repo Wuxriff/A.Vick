@@ -15,11 +15,11 @@ namespace A_Vick.Telegram.Service.Extensions
 
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ITelegramBotService, TelegramBotService>();
+            services.AddSingleton<ITelegramBotService, TelegramBotService>();
             services.AddScoped<ITelegramBotStickerService, TelegramBotStickerService>();
             services.AddSingleton<IMemoryCacheManager, MemoryCacheManager>();
             services.AddSingleton<ITelegramBotConfigurationService, TelegramBotConfigurationService>();
-            services.AddScoped<ITelegramBotContext, TelegramBotContext>();
+            services.AddSingleton<ITelegramBotContext, TelegramBotContext>();
             services.AddSingleton<ITelegramBotHandlerManagerService, TelegramBotHandlerManagerService>();
             services.AddScoped<ITelegramBotMessageHandlerService, TelegramBotMessageHandlerService>();
         }

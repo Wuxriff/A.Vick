@@ -20,7 +20,6 @@ namespace A_Vick.Telegram.BL.StateHandlers
 
         private const string ErrorStickerMessage = "Not a sticker, sorry. Please, send us a sticker!";
 
-        private long _userId;
         private string? _sourceSetName;
         private string? _importTosetName;
 
@@ -28,8 +27,6 @@ namespace A_Vick.Telegram.BL.StateHandlers
         {
             if (CurrentState == TelegramBotHandlerStates.CommandImportSet_Start)
             {
-                _userId = message.From!.Id;
-
                 CurrentState = TelegramBotHandlerStates.CommandImportSet_WaitingSticker;
                 return (WelcomeMessage, this);
             }
@@ -63,7 +60,7 @@ namespace A_Vick.Telegram.BL.StateHandlers
                 _importTosetName = sticker.SetName;
 
                 var service = services.GetRequiredService<ITelegramBotStickerService>();
-                await service.ImportStickerSetAsync(_userId, _sourceSetName!, _importTosetName!);
+                await service.ImportStickerSetAsync(message.From!.Id, _sourceSetName!, _importTosetName!);
 
                 CurrentState = TelegramBotHandlerStates.None;
                 return (ImportStickerSetToSet, new IdleHandler());

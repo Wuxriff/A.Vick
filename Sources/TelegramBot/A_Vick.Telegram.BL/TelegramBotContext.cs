@@ -6,27 +6,22 @@ namespace A_Vick.Telegram.BL
 {
     public class TelegramBotContext : ITelegramBotContext
     {
-        private readonly IMemoryCacheManager _memoryCacheManager;
-
-        public TelegramBotContext(IMemoryCacheManager memoryCacheManager)
-        {
-            _memoryCacheManager = memoryCacheManager;
-        }
+        private TelegramBotClient? _botClient;
 
         public TelegramBotClient BotClient
         {
             get
             {
-                if (_memoryCacheManager.TryGet<TelegramBotClient>(nameof(TelegramBotClient), out var result))
+                if (_botClient != null)
                 {
-                    return result!;
+                    return _botClient;
                 }
 
-                throw new Exception("Failed to get TelegramBotClient");
+                throw new NullReferenceException("Failed to get TelegramBotClient");
             }
             set
             {
-                _memoryCacheManager.AddOrReplace(nameof(TelegramBotClient), value);
+                _botClient = value;
             }
         }
     }
